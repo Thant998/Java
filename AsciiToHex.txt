@@ -1,0 +1,32 @@
+public class AsciiToHex {
+    //method for convert from Ascii to Hex
+    private static String convertToHex(String ascii) {
+        char[] chrs=ascii.toCharArray();
+        StringBuilder sb=new StringBuilder();
+        for(char item:chrs){
+            int i=(int) item;
+            sb.append(Integer.toHexString(i).toUpperCase());
+        }
+        return sb.toString();
+    }
+    
+    //method for convert from Hex to Ascii
+    private static String convertToAscii(String hex){
+        if (hex.length()%2!=0){
+            System.out.println("Invalid hex");
+        }
+        StringBuilder sb1=new StringBuilder();
+        for (int i=0;i<hex.length();i+=2){
+            String str=hex.substring(i,i+2);
+            int n=Integer.valueOf(str,16);
+            sb1.append((char) n);
+        }
+        return sb1.toString();
+    }
+    public static void main(String[] args) {
+        String s="hey my name is Donald Thant";
+        String s1="686579206D79206E616D6520697320446F6E616C64205468616E74";
+        System.out.println(convertToHex(s));
+        System.out.println((convertToAscii(s1)));
+    }
+}
